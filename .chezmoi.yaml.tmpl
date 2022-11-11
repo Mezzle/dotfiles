@@ -19,6 +19,13 @@
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
+{{- $work := false }}
+{{- if hasKey . "work" -}}
+{{-   $work = .work -}}
+{{- else if $interactive -}}
+{{-   $work = promptBool "Is this a work machine?" $work -}}
+{{- end -}}
+
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
@@ -33,3 +40,4 @@ age:
 data:
   name: "{{ $name }}"
   email: "{{ $email }}"
+  work: {{ $work }}
