@@ -37,10 +37,11 @@
     defaultBranch = main
 [pull]
 	ff = only
-
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 {{- if hasKey . "git" -}}
 {{ if hasKey .git "signingKey" }}
 [commit]
     gpgsign = true
 {{ end }}
-{{- end -}}
+{{- end }}
