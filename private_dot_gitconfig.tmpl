@@ -1,11 +1,9 @@
 [user]
-    name = {{ .name }}
-    email = {{ .email }}
-{{- if hasKey . "git" -}}
-{{ if hasKey .git "signingKey" }}
-    signingkey = 41E8A6230EF4246EE9FFF71FDE3F9DB5B417CA0D
-{{ end }}
-{{- end -}}
+    name = {{ .name | quote  }}
+    email = {{ .email | quote }}
+{{- if and (hasKey . "git")  (hasKey .git "signingKey") }}
+    signingkey = {{ .git.signingKey }}
+{{- end }}
 [github]
     user = Mezzle
 [color]
