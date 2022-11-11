@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall gpg-agent
+gpgconf --launch gpg-agent
