@@ -1,0 +1,4 @@
+Include config.d/*
+
+Host *
+    IdentityAgent /Users/mez/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
