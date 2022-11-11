@@ -1,0 +1,2 @@
+Host *.debian.org
+    User mez
