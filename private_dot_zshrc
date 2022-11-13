@@ -1,0 +1,19 @@
+KERNEL=$(uname -s)
+
+if [ ! -d $HOME/.antigen ]; then
+    mkdir $HOME/.antigen
+fi
+
+if [[ "$KERNEL" == "Darwin" ]]; then
+    source $(brew --prefix)/share/antigen/antigen.zsh
+else
+    source $HOME/.antigen.zsh;
+fi
+
+antigen init $HOME/.antigenrc
+
+if [ -d $HOME/.zshrc.d ]; then
+    for file in $HOME/.zshrc.d/*.zsh; do
+        source $file
+    done
+fi
