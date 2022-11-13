@@ -1,0 +1,44 @@
+antigen use oh-my-zsh
+
+# Experimental
+
+antigen bundle chrissicool/zsh-256color
+antigen bundle ael-code/zsh-colored-man-pages
+antigen bundle dbz/kube-aliases
+antigen bundle eventi/noreallyjustfuckingstopalready
+antigen bundle mezzle/plugin-osx
+antigen bundle laggardkernel/zsh-thefuck
+antigen bundle zpm-zsh/undollar
+
+antigen bundle aws
+antigen bundle brew
+antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle compleat
+antigen bundle docker
+antigen bundle encode64
+antigen bundle git
+antigen bundle git-extras
+antigen bundle gitfast
+antigen bundle github
+antigen bundle gpg-agent
+antigen bundle iterm2
+antigen bundle osx
+antigen bundle perms
+antigen bundle rbenv
+antigen bundle sudo
+antigen bundle terraform
+antigen bundle wd
+antigen bundle yarn
+
+antigen theme terminalparty
+
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen apply
