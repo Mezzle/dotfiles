@@ -1,12 +1,15 @@
 antigen use oh-my-zsh
 
-# Experimental
+{{ if eq .chezmoi.os "darwin" -}}
+antigen bundle osx
+{{- end }}
 
 antigen bundle chrissicool/zsh-256color
 antigen bundle ael-code/zsh-colored-man-pages
-antigen bundle dbz/kube-aliases
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle eventi/noreallyjustfuckingstopalready
-antigen bundle mezzle/plugin-osx
 antigen bundle laggardkernel/zsh-thefuck
 antigen bundle zpm-zsh/undollar
 
@@ -25,20 +28,18 @@ antigen bundle gpg-agent
 antigen bundle iterm2
 antigen bundle macos
 antigen bundle perms
-antigen bundle rbenv
 antigen bundle sudo
 antigen bundle terraform
-antigen bundle wd
 antigen bundle yarn
 
-antigen theme terminalparty
+{{ if .work -}}
+antigen bundle rbenv
+antigen bundle dbz/kube-aliases
+{{ end -}}
 
 export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
 
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme terminalparty
 
 antigen apply

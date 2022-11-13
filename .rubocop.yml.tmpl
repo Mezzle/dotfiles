@@ -1,0 +1,27 @@
+{{- if .work -}}
+require: rubocop-rails
+
+Style/Documentation:
+    Enabled: false
+
+Metrics/LineLength:
+    Max: 160
+    Exclude:
+        - 'test/**/*_test.rb'
+
+Metrics/BlockLength:
+    Exclude:
+        - 'test/**/*_test.rb'
+        Metrics/ClassLength:
+            Exclude:
+                - 'test/**/*_test.rb'
+
+Rails:
+    Enabled: true
+
+Style/FrozenStringLiteralComment:
+    Enabled: false
+
+Style/ClassAndModuleChildren:
+    Enabled: false
+{{- end -}}
