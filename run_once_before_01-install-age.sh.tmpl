@@ -3,5 +3,5 @@
 {{ if eq .chezmoi.os "darwin" -}}
 brew install age
 {{ else if eq .chezmoi.os "linux" -}}
-apt install age
+sudo apt install age
 {{- end -}}
