@@ -23,7 +23,7 @@ antigen bundle gitfast
 antigen bundle github
 antigen bundle gpg-agent
 antigen bundle iterm2
-antigen bundle osx
+antigen bundle macos
 antigen bundle perms
 antigen bundle rbenv
 antigen bundle sudo
