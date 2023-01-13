@@ -1,3 +1,3 @@
-pinentry-program {{ output "brew" "--prefix" | trim}}/bin/pinentry-mac
+{{ if eq .chezmoi.os "darwin" -}}pinentry-program {{ output "brew" "--prefix" | trim}}/bin/pinentry-mac{{- else -}}pinentry-program /usr/bin/pinentry{{- endif }}
 default-cache-ttl 600
 max-cache-ttl 7200
