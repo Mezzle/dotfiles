@@ -1,0 +1,11 @@
+Host steropes
+  Hostname steropes.feralhosting.com
+  User mezzle
+
+Host github.com
+  User git
+{{- if ne .chezmoi.hostname "charm" }}
+
+Host charm
+  Hostname charm.i.67l.uk
+{{- end }}
