@@ -21,6 +21,22 @@
 {{-   $work = promptBool "Is this a work machine?" $work -}}
 {{- end -}}
 
+{{- $gpgSign := false -}}
+{{- if hasKey . "gpgSign" -}}
+{{-   $gpgSign = .gpgSign -}}
+{{- else if $interactive -}}
+{{-   $gpgSign = promptBool "Sign Git Commits?" $gpgSign -}}
+{{- end -}}
+
+{{- $signingKey := "" -}}
+{{- if $gpgSign -}}
+{{-   if and (hasKey . "gpg") (hasKey .gpg "signingKey") -}}
+{{-     $signingKey = .gpg.signingKey -}}
+{{-   else if $interactive -}}
+{{-     $signingKey = promptString "GPG Signing Key" $signingKey -}}
+{{-   end -}}
+{{- end -}}
+
 progress: true
 
 sourceDir: "{{ .chezmoi.sourceDir }}"
@@ -34,3 +50,7 @@ data:
   name: "{{ $name }}"
   email: "{{ $email }}"
   work: {{ $work }}
+  {{- if $gpgSign }}
+  git:
+    signingKey: "{{ $signingKey }}"
+  {{- end }}
