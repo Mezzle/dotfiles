@@ -1,8 +1,8 @@
 [user]
     name = {{ .name | quote  }}
     email = {{ .email | quote }}
-{{- if and (hasKey . "git")  (hasKey .git "signingKey") }}
-    signingkey = {{ .git.signingKey }}
+{{- if .signGitCommits }}
+    signingkey = {{ .signingKey }}
 {{- end }}
 [github]
     user = Mezzle
@@ -28,9 +28,7 @@
 	ff = only
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-{{- if hasKey . "git" -}}
-{{ if hasKey .git "signingKey" }}
+{{- if .signGitCommits }}
 [commit]
     gpgsign = true
-{{ end }}
 {{- end }}
