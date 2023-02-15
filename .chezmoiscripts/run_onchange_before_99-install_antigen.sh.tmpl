@@ -1,8 +1,8 @@
 #!/bin/bash
-    {{ if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
     brew install antigen
 {{- else if eq .chezmoi.os "linux" -}}
-    if [ ! -f $HOME/.antigen.zsh ]; then
-        wget -qO $HOME/.antigen.zsh http://git.io/antigen
+    if [ ! -f {{ .chezmoi.homeDir }}/.antigen.zsh ]; then
+        wget -qO {{ .chezmoi.homeDir }}/.antigen.zsh http://git.io/antigen
     fi
 {{- end }}
