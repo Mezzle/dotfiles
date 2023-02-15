@@ -26,8 +26,22 @@
     defaultBranch = main
 [pull]
 	ff = only
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+[url "ssh://git@github.com/Mezzle"]
+	insteadOf = https://github.com/Mezzle
+[url "ssh://git@github.com/sane-defaults"]
+	insteadOf = https://github.com/sane-defaults
+[url "ssh://git@github.com/Debian"]
+	insteadOf = https://github.com/Debian
+[url "ssh://git@github.com/Flamboyant-Potato"]
+	insteadOf = https://github.com/Flamboyant-Potato
+[url "ssh://git@github.com/GamerPowered"]
+	insteadOf = https://github.com/GamerPowered
+[url "ssh://git@github.com/Majimez"]
+    insteadOf = https://github.com/Majimez
+{{- if .work }}
+[url "ssh://git@github.com/substrakt-health"]
+    insteadOf = https://github.com/substrakt-health
+{{- end }}
 {{- if .signGitCommits }}
 [commit]
     gpgsign = true
