@@ -1,13 +1,14 @@
 {{- $interactive := stdinIsATTY -}}
+{{- $codespaces:= env "CODESPACES" | not | not -}}
 
-{{- $name := "Your Name" -}}
+{{- $name := "Martin Meredith" -}}
 {{- if hasKey . "name" -}}
 {{-   $name = .name -}}
 {{- else if $interactive -}}
 {{-   $name = promptString "name" $name -}}
 {{- end -}}
 
-{{- $email := "your@email.com" -}}
+{{- $email := "martin@sourceguru.net" -}}
 {{- if hasKey . "email" -}}
 {{-   $email = .email -}}
 {{- else if $interactive -}}
@@ -41,5 +42,6 @@ data:
   name: "{{ $name }}"
   email: "{{ $email }}"
   work: {{ $work }}
+  codespaces = {{ $codespaces }}
   signGitCommits: {{ $gpgSign }}
   signingKey: 065BFD16E4BFB184D73F768C2AFBD67FD133AC6E
