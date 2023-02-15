@@ -4,8 +4,8 @@
     brew install age
 {{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu")) -}}
     {{- if lt .chezmoi.osRelease.versionID "22.04" -}}
-        wget -O {{ .chezmoi.homeDir }}/.local/bin/age https://dl.filippo.io/age/latest?for=linux/{{ .chezmoi.arch }}
-        chmod a+x {{ .chezmoi.homeDir }}/.local/bin/age
+        rm -rf {{ .chezmoi.homeDir }}/.local/bin/age
+        wget -O - https://dl.filippo.io/age/latest\?for\=linux/amd64 | tar -zx -C {{ .chezmoi.homeDir }}/.local/bin --strip-components=1 age/age age/age-keygen
     {{- else -}}
         sudo apt install age -y
     {{end -}}
