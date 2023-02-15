@@ -6,3 +6,4 @@
 .gitignore.d/**
 .gitignore.d
 .vim
+.vimrc
