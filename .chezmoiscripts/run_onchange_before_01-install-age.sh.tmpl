@@ -3,5 +3,5 @@
 {{ if eq .chezmoi.os "darwin" -}}
     brew install age
 {{ else if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
-    sudo apt install age
+    sudo apt install age -y
 {{- end -}}
