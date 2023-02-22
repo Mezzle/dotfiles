@@ -4,8 +4,14 @@ Host steropes
 
 Host github.com
   User git
+{{- if ne .chezmoi.hostname "pancake" }}
+
+host pancake
+  hostname pancake.i.67l.uk
+{{- end }}
+
 {{- if ne .chezmoi.hostname "charm" }}
 
-Host charm
-  Hostname charm.i.67l.uk
+host charm
+  hostname charm.i.67l.uk
 {{- end }}
