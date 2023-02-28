@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" -}}
 {
 /* Remap Home / End keys */
 /* Home Button*/
@@ -17,3 +18,4 @@
 /* Shift + Ctrl + End Button*/
 "$^\UF72B" = "moveToEndOfDocumentAndModifySelection:";
 }
+{{- end -}}
