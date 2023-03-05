@@ -15,3 +15,9 @@ host pancake
 host charm
   hostname charm.i.67l.uk
 {{- end }}
+
+{{- if ne .chezmoi.hostname "safety" }}
+
+host safety
+  hostname safety.i.67l.uk
+{{- end }}
