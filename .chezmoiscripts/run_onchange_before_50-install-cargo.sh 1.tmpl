@@ -1,0 +1,6 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+    brew install rust
+{{- else if eq .chezmoi.os "linux" -}}
+    sudo apt install cargo
+{{- end }}

@@ -7,3 +7,4 @@
 .gitignore.d
 .vim
 .vimrc
+,zshrc.d/99-nvm.zsh
