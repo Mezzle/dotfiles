@@ -2,11 +2,9 @@
 
 {{ if eq .chezmoi.os "darwin" -}}
     brew install age
-{{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu")) -}}
-    {{- if semverCompare "<22.04" .chezmoi.osRelease.versionID -}}
-        rm -rf {{ .chezmoi.homeDir }}/.local/bin/age
-        wget -O - https://dl.filippo.io/age/latest\?for\=linux/amd64 | tar -zx -C {{ .chezmoi.homeDir }}/.local/bin --strip-components=1 age/age age/age-keygen
-    {{- else -}}
-        sudo apt install age -y
-    {{end -}}
+{{ else if (and (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu")) (semverCompare ">=22.04" .chezmoi.osRelease.versionID)) -}}
+    sudo apt install age -y
+{{ else -}}
+    rm -rf {{ .chezmoi.homeDir }}/.local/bin/age
+    wget -O - https://dl.filippo.io/age/latest\?for\={{ .chezmoi.os }}/{{ .chezmoi.arch }} | tar -zx -C {{ .chezmoi.homeDir }}/.local/bin --strip-components=1 age/age age/age-keygen
 {{- end }}
