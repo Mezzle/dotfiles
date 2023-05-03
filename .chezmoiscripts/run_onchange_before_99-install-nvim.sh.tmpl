@@ -2,6 +2,6 @@
 {{ if eq .chezmoi.os "darwin" -}}
   brew install neovim
 {{- else if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
-  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo add-apt-repository ppa:neovim-ppa/unstable -y
   sudo apt install build-essential neovim -y
 {{- end }}
