@@ -1,0 +1,6 @@
+#!/bin/sh
+
+{{ if eq .chezmoi.os "darwin" -}}
+brew install tailscale pdf-expert iterm2 setapp zoom 1password alfred google-chrome protonvpn protonmail-bridge obsidian
+{{ else if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{- end -}}
