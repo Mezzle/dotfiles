@@ -1,5 +1,6 @@
+{{ if .codespaces -}}
 #!/bin/sh
 
-{{ if .codespaces -}}
 sudo apt update -y
+sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
 {{- end -}}
