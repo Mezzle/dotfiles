@@ -1,7 +1,0 @@
-#!/bin/sh
-{{- if not .codespaces }}
-if [ ! -f "{{ .chezmoi.homeDir }}/.cz-key" ]; then
-    age --decrypt --output "{{ .chezmoi.homeDir }}/.cz-key" "{{ .chezmoi.sourceDir }}/key.txt.age"
-    chmod 600 "{{ .chezmoi.homeDir }}/.cz-key"
-fi
-{{ end -}}
