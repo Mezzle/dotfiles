@@ -105,7 +105,7 @@ disabled = true
 format = '[$symbol($version )]($style)'
 
 [hostname]
-format = '[$ssh_symbol$hostname]($style) '
+format = '[$hostname]($style) '
 ssh_only = true
 
 [java]
@@ -195,7 +195,7 @@ disabled = false
 format = '[$time]($style) '
 
 [username]
-format = '[$user]($style)@'	
+format = '[$user]($style)@'
 
 [vagrant]
 disabled = true
@@ -208,4 +208,3 @@ disabled = true
 
 [zig]
 disabled = true
-
