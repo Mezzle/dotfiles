@@ -1,0 +1,4 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "linux" -}}
+    sudo apt install cargo -y
+{{- end }}

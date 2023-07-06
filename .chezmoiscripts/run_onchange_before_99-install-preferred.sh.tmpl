@@ -9,4 +9,5 @@ brew install awscli docker-compose gh
 brew install gnupg pinentry-mac
 {{- end }}
 {{ else if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+  cargo install starship --locked
 {{- end -}}
