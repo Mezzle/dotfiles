@@ -1,0 +1,15 @@
+#!/bin/bash
+
+{{ if .work -}}
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+{{- else -}}
+  {{- if eq .chezmoi.os "darwin" -}}
+    brew install cargo
+  {{- else if eq .chezmoi.os "linux" -}}
+    sudo apt install cargo -y
+  {{- else -}}
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  {{- end -}}
+{{- end }}
+
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
