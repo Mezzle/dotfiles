@@ -4,7 +4,7 @@
 brew uninstall protonvpn protonmail-brudge
 brew install tailscale pdf-expert iterm2 setapp zoom 1password alfred \
   google-chrome private-internet-access obsidian starship
-{{ if .work }}
+{{ if .devMachine }}
 brew install awscli docker-compose gh
 {{- end }}
 {{ if .signGitCommits }}

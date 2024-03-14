@@ -1,48 +1,50 @@
 [user]
-    name = {{ .name | quote  }}
-    email = {{ .email | quote }}
+  name = {{ .name | quote  }}
+  email = {{ .email | quote }}
 {{- if .signGitCommits }}
-    signingkey = {{ .signingKey }}
+  signingkey = {{ .signingKey }}
 {{- end }}
 [github]
-    user = Mezzle
+  user = Mezzle
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
 [alias]
-    co = checkout
-    ff = pull --ff-only
-    st = status
+  co = checkout
+  ff = pull --ff-only
+  st = status
 [push]
-    default = simple
+  default = simple
 [core]
-    excludesfile = ~/.gitignore_global
-    autocrlf = input
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
 [rerere]
-    enabled = true
+  enabled = true
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [pull]
-	ff = only
+  ff = only
 [url "ssh://git@github.com/Mezzle"]
-	insteadOf = https://github.com/Mezzle
+  insteadOf = https://github.com/Mezzle
 [url "ssh://git@github.com/sane-defaults"]
-	insteadOf = https://github.com/sane-defaults
+  insteadOf = https://github.com/sane-defaults
 [url "ssh://git@github.com/Debian"]
-	insteadOf = https://github.com/Debian
+  insteadOf = https://github.com/Debian
 [url "ssh://git@github.com/Flamboyant-Potato"]
-	insteadOf = https://github.com/Flamboyant-Potato
+  insteadOf = https://github.com/Flamboyant-Potato
 [url "ssh://git@github.com/GamerPowered"]
-	insteadOf = https://github.com/GamerPowered
+  insteadOf = https://github.com/GamerPowered
 [url "ssh://git@github.com/Majimez"]
-    insteadOf = https://github.com/Majimez
+  insteadOf = https://github.com/Majimez
 {{- if .work }}
-[url "ssh://git@github.com/substrakt-health"]
-    insteadOf = https://github.com/substrakt-health
+[includeIf "gitdir:**/seedata/**/.git"]
+  path = ~/.gitconfig.work
+[url "ssh://git@github.com/seedata-io"]
+  insteadOf = https://github.com/seedata-io
 {{- end }}
 {{- if .signGitCommits }}
 [commit]
-    gpgsign = true
+  gpgsign = true
 {{- end }}
