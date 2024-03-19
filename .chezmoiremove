@@ -11,3 +11,5 @@
 .cz-key
 .ssh/config.d/substrakt
 .rubocop.yml
+.zshrc.d/99-bun.zsh
+.zshrc.d/99-rancher.zsh

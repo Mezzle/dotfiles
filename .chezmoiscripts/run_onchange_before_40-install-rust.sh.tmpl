@@ -8,7 +8,7 @@
   {{- else if eq .chezmoi.os "linux" -}}
     # sudo apt install cargo -y
   {{- else -}}
-      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   {{- end -}}
 {{- end }}
 

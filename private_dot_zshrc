@@ -1,19 +1,24 @@
 KERNEL=$(uname -s)
 
-if [ ! -d $HOME/.antigen ]; then
-    mkdir $HOME/.antigen
+if [ ! -d ${HOME}/.antigen ]; then
+    mkdir ${HOME}/.antigen
 fi
 
 if [[ "$KERNEL" == "Darwin" ]]; then
-    source $(brew --prefix)/share/antigen/antigen.zsh
+    if [ -f /opt/homebrew/bin/brew ]; then
+        source "$(/opt/homebrew/bin/brew --prefix)/share/antigen/antigen.zsh"
+    else
+        source "$(/usr/local/bin/brew --prefix)/share/antigen/antigen.zsh"
+    fi
 else
-    source $HOME/.antigen.zsh;
+    source ${HOME}/.antigen.zsh
 fi
 
-antigen init $HOME/.antigenrc
+antigen init ${HOME}/.antigenrc
 
-if [ -d $HOME/.zshrc.d ]; then
-    for file in $HOME/.zshrc.d/*.zsh; do
-        source $file
+if [ -d ${HOME}/.zshrc.d ]; then
+    for FILE in ${HOME}/.zshrc.d/*.zsh; do
+        # shellcheck disable=SC1090
+        source "${FILE}"
     done
 fi

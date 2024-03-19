@@ -1,11 +1,11 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew uninstall protonvpn protonmail-brudge
-brew install tailscale pdf-expert iterm2 setapp zoom 1password alfred \
+brew uninstall protonvpn protonmail-bridge tailscale
+brew install pdf-expert iterm2 setapp 1password alfred \
   google-chrome private-internet-access obsidian starship
 {{ if .devMachine }}
-brew install awscli docker-compose gh
+brew install awscli docker-compose gh session-manager-plugin
 {{- end }}
 {{ if .signGitCommits }}
 brew install gnupg pinentry-mac
