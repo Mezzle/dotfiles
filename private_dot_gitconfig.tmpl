@@ -38,12 +38,6 @@
   insteadOf = https://github.com/GamerPowered
 [url "ssh://git@github.com/Majimez"]
   insteadOf = https://github.com/Majimez
-{{- if .work }}
-[includeIf "gitdir:**/seedata/**/.git"]
-  path = ~/.gitconfig.work
-[url "ssh://git@github.com/seedata-io"]
-  insteadOf = https://github.com/seedata-io
-{{- end }}
 {{- if .signGitCommits }}
 [commit]
   gpgsign = true
