@@ -1,4 +1,4 @@
-format = """ $username$hostname$jobs$shlvl$character"""
+format = """ $aws$username$hostname$jobs$character"""
 right_format="""
 $directory\
 $git_branch\
@@ -29,7 +29,12 @@ $container\
 add_newline = false
 
 [aws]
-disabled = true
+disabled = false
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+
+[aws.region_aliases]
+eu-west-2 = 'lon'
 
 [buf]
 disabled = true
@@ -175,8 +180,7 @@ format = '[$symbol($version )]($style)'
 disabled = true
 
 [shlvl]
-disabled = false
-threshold = 3
+disabled = true
 
 [singularity]
 disabled = true
