@@ -1,23 +1,2 @@
-Host steropes
-  Hostname steropes.feralhosting.com
-  User mezzle
-
 Host github.com
   User git
-{{- if ne .chezmoi.hostname "pancake" }}
-
-host pancake
-  hostname pancake.i.67l.uk
-{{- end }}
-
-{{- if ne .chezmoi.hostname "charm" }}
-
-host charm
-  hostname charm.i.67l.uk
-{{- end }}
-
-{{- if ne .chezmoi.hostname "safety" }}
-
-host safety
-  hostname safety.i.67l.uk
-{{- end }}

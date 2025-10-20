@@ -1,15 +1,53 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew uninstall protonvpn protonmail-bridge tailscale
-brew install pdf-expert iterm2 setapp 1password alfred \
-  google-chrome private-internet-access obsidian starship
+brew uninstall coreutils protonvpn proton-mail-bridge alfred arc
+
+brew install \
+  1password \
+  1password-cli \
+  affinity-photo \
+  font-jetbrains-mono-nerd-font \
+  ghostty \
+  git \
+  gnu-which \
+  grep \
+  latest \
+  legcord \
+  microsoft-office \
+  neovim \
+  obsidian \
+  openssh \
+  pdf-expert \
+  private-internet-access \
+  raycast \
+  setapp \
+  starship \
+  uutils-coreutils \
+  uutils-diffutils \
+  vivaldi \
+  wget
+
 {{ if .devMachine }}
-brew install awscli docker-compose gh session-manager-plugin
+brew install \
+  awscli \
+  bat \
+  gh \
+  jq \
+  pipx \
+  ripgrep \
+  yamllink \
+  jetbrains-toolbox
+
+{{ if not .work }}
+brew install orbstack
+{{ end }}
 {{- end }}
+
 {{ if .signGitCommits }}
-brew install gnupg pinentry-mac
+brew install \
+  gnupg \
+  pinentry-mac
 {{- end }}
-{{ else if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
-  cargo binstall starship --locked
+
 {{- end -}}

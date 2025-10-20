@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "darwin" -}}
+export BREW_PREFIX=$(brew --prefix)
+export PATH="${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
+export PATH="${BREW_PREFIX}/opt/gnu-which/libexec/gnubin:${PATH}"
+export PATH="${BREW_PREFIX}/opt/uutils-coreutils/libexec/uubin:${PATH}"
+export PATH="${BREW_PREFIX}/opt/uutils-diffutils/libexec/uubin:${PATH}"
+export MANPATH="${BREW_PREFIX}/opt/uutils-coreutils/libexec/uuman:${MANPATH}"
+export MANPATH="${BREW_PREFIX}/opt/uutils-diffutils/libexec/uuman:${MANPATH}"
+
+alias ls="uls --color=always"
+disable which
+{{ end -}}
