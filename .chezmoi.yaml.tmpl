@@ -1,5 +1,4 @@
 {{- $interactive := stdinIsATTY -}}
-{{- $codespaces:= env "CODESPACES" | not | not -}}
 
 {{- $name := "Martin Meredith" -}}
 {{- if hasKey . "name" -}}
@@ -29,12 +28,26 @@
 {{-   $devMachine = promptBool "Is this a devMachine machine?" $devMachine -}}
 {{- end -}}
 
+{{- $gaming := false }}
+{{- if hasKey . "gaming" -}}
+{{-   $gaming = .gaming -}}
+{{- else if $interactive -}}
+{{-   $gaming = promptBool "Is this a gaming machine?" $gaming -}}
+{{- end -}}
+
 {{- $gpgSign := false -}}
 {{- if hasKey . "signGitCommits" -}}
 {{-   $gpgSign = .signGitCommits -}}
 {{- else if $interactive -}}
 {{-   $gpgSign = promptBool "Sign Git Commits?" $gpgSign -}}
 {{- end -}}
+
+{{- $signingKey := '065BFD16E4BFB184D73F768C2AFBD67FD133AC6E' -}}
+{{- if hasKey . "signingKey" -}}
+{{-   $signingKey = .signingKey -}}
+{{- else if $interactive -}}
+{{-   $signingKey = promptString "Signing Key?" $signingKey -}}
+{{- end }}
 
 progress: true
 
@@ -45,5 +58,6 @@ data:
   email: "{{ $email }}"
   work: {{ $work }}
   devMachine: {{ $devMachine }}
+  gaming: {{ $gaming }}
   signGitCommits: {{ $gpgSign }}
   signingKey: 065BFD16E4BFB184D73F768C2AFBD67FD133AC6E

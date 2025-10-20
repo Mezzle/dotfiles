@@ -8,10 +8,12 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-zinit snippet OMZL::keybindings.zsh
+zinit snippet OMZL::key-bindings.zsh
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
+{{ if .devMachine }}
 zinit snippet OMZP::aws
+{{- end }}
 
 autoload -U compinit && compinit
 

@@ -1,7 +1,0 @@
-#!/bin/bash
-{{ if eq .chezmoi.os "darwin" -}}
-  brew install neovim
-{{- else if eq .chezmoi.os "linux"  -}}
-  sudo add-apt-repository ppa:neovim-ppa/unstable -y
-  sudo apt install build-essential neovim -y
-{{- end }}

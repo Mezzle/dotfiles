@@ -1,7 +1,12 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew uninstall coreutils protonvpn proton-mail-bridge alfred arc
+brew uninstall \
+  alfred \
+  arc\
+  coreutils \
+  proton-mail-bridge \
+  protonvpn
 
 brew install \
   1password \
@@ -32,22 +37,28 @@ brew install \
 brew install \
   awscli \
   bat \
+  fnm\
   gh \
+  jetbrains-toolbox\
   jq \
   pipx \
-  ripgrep \
-  yamllink \
-  jetbrains-toolbox
+  ripgrep
+  yamllink
 
-{{ if not .work }}
-brew install orbstack
-{{ end }}
+  {{ if not .work }}
+  brew install orbstack
+  {{ end }}
 {{- end }}
 
 {{ if .signGitCommits }}
 brew install \
   gnupg \
   pinentry-mac
+{{- end }}
+
+{{ if .gaming }}
+brew install \
+  steam
 {{- end }}
 
 {{- end -}}
