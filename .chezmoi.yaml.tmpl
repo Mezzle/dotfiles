@@ -42,7 +42,7 @@
 {{-   $gpgSign = promptBool "Sign Git Commits?" $gpgSign -}}
 {{- end -}}
 
-{{- $signingKey := '065BFD16E4BFB184D73F768C2AFBD67FD133AC6E' -}}
+{{- $signingKey := "065BFD16E4BFB184D73F768C2AFBD67FD133AC6E" -}}
 {{- if hasKey . "signingKey" -}}
 {{-   $signingKey = .signingKey -}}
 {{- else if $interactive -}}
@@ -60,4 +60,4 @@ data:
   devMachine: {{ $devMachine }}
   gaming: {{ $gaming }}
   signGitCommits: {{ $gpgSign }}
-  signingKey: 065BFD16E4BFB184D73F768C2AFBD67FD133AC6E
+  signingKey: {{ $signingKey }}
