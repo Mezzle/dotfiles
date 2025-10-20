@@ -1,10 +1,4 @@
 {{ if eq .chezmoi.os "darwin" -}}
-if [[ -f /opt/homebrew/bin/brew ]]; then
-  export PATH="/opt/homebrew/bin:$PATH"
-else
-  export PATH="/usr/local/bin:$PATH"
-fi
-
 alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
 export HOMEBREW_NO_ENV_HINTS=true
 

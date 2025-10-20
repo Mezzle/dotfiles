@@ -1,5 +1,13 @@
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 
+{{ if eq .chezmoi.os "darwin" -}}
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+else
+  export PATH="/usr/local/bin:$PATH"
+fi
+{{- end }}
+
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
