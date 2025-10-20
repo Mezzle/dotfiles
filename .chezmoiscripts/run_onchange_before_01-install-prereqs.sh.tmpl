@@ -1,5 +1,14 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
-brew install font-jetbrains-mono-nerd-font git gnu-which grep openssh neovim \
-starship uutils-coreutils uutils-diffutilswget
+brew install \
+  font-jetbrains-mono-nerd-font \
+  git \
+  gnu-which \
+  grep \
+  openssh \
+  neovim \
+  starship \
+  uutils-coreutils \
+  uutils-diffutils \
+  wget
 {{- end -}}
