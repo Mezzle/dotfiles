@@ -7,45 +7,43 @@ brew uninstal arc
 brew uninstal proton-mail-bridge
 brew uninstal protonvpn
 
-brew install \
-  1password \
-  1password-cli \
-  affinity-photo \
-  font-jetbrains-mono-nerd-font \
-  fzf \
-  ghostty \
-  git \
-  gnu-which \
-  grep \
-  latest \
-  legcord \
-  microsoft-office \
-  neovim \
-  obsidian \
-  openssh \
-  pdf-expert \
-  private-internet-access \
-  raycast \
-  setapp \
-  spotify \
-  starship \
-  uutils-coreutils \
-  uutils-diffutils \
-  vivaldi \
-  wget \
-  zoxide
+brew install 1password
+brew install 1password-cli
+brew install affinity-photo
+brew install font-jetbrains-mono-nerd-font
+brew install fzf
+brew install ghostty
+brew install git
+brew install gnu-which
+brew install grep
+brew install latest
+brew install legcord
+brew install microsoft-office
+brew install neovim
+brew install obsidian
+brew install openssh
+brew install pdf-expert
+brew install private-internet-access
+brew install raycast
+brew install setapp
+brew install spotify
+brew install starship
+brew install uutils-coreutils
+brew install uutils-diffutils
+brew install vivaldi
+brew install wget
+brew install zoxide
 
 {{ if .devMachine }}
-brew install \
-  awscli \
-  bat \
-  fnm \
-  gh \
-  jetbrains-toolbox\
-  jq \
-  pipx \
-  ripgrep
-  yamllint
+brew install awscli
+brew install bat
+brew install fnm
+brew install gh
+brew install jetbrains-toolbox
+brew install jq
+brew install pipx
+brew install ripgrep
+brew install yamllint
 
   {{ if not .work }}
   brew install orbstack
@@ -53,14 +51,12 @@ brew install \
 {{- end }}
 
 {{ if .signGitCommits }}
-brew install \
-  gnupg \
-  pinentry-mac
+brew install gnupg 
+brew install pinentry-mac
 {{- end }}
 
 {{ if .gaming }}
-brew install \
-  steam
+brew install steam
 {{- end }}
 
 {{- end -}}
