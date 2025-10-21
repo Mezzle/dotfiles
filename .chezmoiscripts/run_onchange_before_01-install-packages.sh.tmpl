@@ -1,12 +1,11 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew uninstall \
-  alfred \
-  coreutils \ 
-  arc \
-  proton-mail-bridge \
-  protonvpn
+brew uninstall alfred
+brew uninstall coreutils
+brew uninstal arc
+brew uninstal proton-mail-bridge
+brew uninstal protonvpn
 
 brew install \
   1password \
