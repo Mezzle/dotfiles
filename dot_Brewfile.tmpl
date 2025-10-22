@@ -1,0 +1,90 @@
+# Generic packages - all systems
+
+brew "chezmoi"
+brew "grep"
+brew "fzf"
+brew "gnu-which"
+brew "htop"
+brew "mas"
+brew "neovim"
+brew "speedtest-cli"
+brew "starship"
+brew "uutils-coreutils"
+brew "uutils-diffutils"
+brew "watch"
+brew "wget"
+brew "zoxide"
+
+cask "1password"
+cask "1password-cli"
+cask "affinity-designer"
+cask "affinity-photo"
+cask "affinity-publisher"
+cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
+cask "latest"
+cask "legcord"
+cask "logi-options+"
+cask "microsoft-office"
+cask "obsidian"
+cask "pdf-expert"
+cask "private-internet-access"
+cask "raycast"
+cask "setapp"
+cask "spotify"
+cask "tailscale-app"
+cask "vivaldi"
+cask "whatsapp"
+
+mas "1Password for Safari", id: 1569813296
+mas "Parcel", id: 375589283
+
+{{ if .work -}}
+# Work machine specific packages
+tap "ddev/ddev"
+
+brew "cocoapods"
+brew "pnpm"
+brew "ruby"
+brew "php@8.2", link: true
+brew "openjdk@17", link: true
+brew "ddev/ddev/ddev"
+
+cask "slack"
+
+mas "Xcode", id: 497799835
+mas "Bitwarden 2", id: 1352778147
+{{- end }}
+
+{{ if .devMachine -}}
+# Development machine specific packages
+brew "awscli"
+brew "bat"
+brew "fnm"
+brew "gh"
+brew "jq"
+brew "node"
+brew "pnpm"
+brew "ripgrep"
+brew "trufflehog"
+
+cask "rapidapi"
+cask "jetbrains-toolbox"
+
+{{ if .work -}}
+cask "rancher"
+{{- else -}}
+cask "orbstack"
+{{- end }}
+{{- end }}
+
+{{ if .signGitCommits -}}
+# Packages for signing git commits
+brew "gnupg"
+brew "pinentry-mac"
+{{- end }}
+
+{{ if .gaming -}}
+# Gaming machine specific packages
+cask "steam"
+{{- end }}

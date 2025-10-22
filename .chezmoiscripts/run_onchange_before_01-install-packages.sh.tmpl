@@ -7,56 +7,5 @@ brew uninstal arc
 brew uninstal proton-mail-bridge
 brew uninstal protonvpn
 
-brew install 1password
-brew install 1password-cli
-brew install affinity-photo
-brew install font-jetbrains-mono-nerd-font
-brew install fzf
-brew install ghostty
-brew install git
-brew install gnu-which
-brew install grep
-brew install latest
-brew install legcord
-brew install microsoft-office
-brew install neovim
-brew install obsidian
-brew install openssh
-brew install pdf-expert
-brew install private-internet-access
-brew install raycast
-brew install setapp
-brew install spotify
-brew install starship
-brew install uutils-coreutils
-brew install uutils-diffutils
-brew install vivaldi
-brew install wget
-brew install zoxide
-
-{{ if .devMachine }}
-brew install awscli
-brew install bat
-brew install fnm
-brew install gh
-brew install jetbrains-toolbox
-brew install jq
-brew install pipx
-brew install ripgrep
-brew install yamllint
-
-  {{ if not .work }}
-  brew install orbstack
-  {{ end }}
-{{- end }}
-
-{{ if .signGitCommits }}
-brew install gnupg 
-brew install pinentry-mac
-{{- end }}
-
-{{ if .gaming }}
-brew install steam
-{{- end }}
-
+brew reinstall git chezmoi
 {{- end -}}
