@@ -1,0 +1,4 @@
+font-size = 16
+split-divider-color = CC0000
+quit-after-last-window-closed = true
+macos-icon = retro
