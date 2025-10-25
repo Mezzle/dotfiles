@@ -1,4 +1,6 @@
-font-size = 16
+font-size = 19
+font-family = "ComicShannsMono Nerd Font"
 split-divider-color = CC0000
 quit-after-last-window-closed = true
 macos-icon = retro
+shell-integration-features = ssh-terminfo
