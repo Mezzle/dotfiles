@@ -203,6 +203,9 @@ disabled = true
 [deno]
 disabled = true
 
+[docker_context]
+format = "[$symbol$context]($style) "
+
 [dotnet]
 disabled = true
 
