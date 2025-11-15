@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
+defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 6
+{{- end }}
