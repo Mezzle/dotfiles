@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "darwin" -}}
+# mysql-client@8.0: only add to PATH if the keg is installed
+() {
+  local p="$(brew --prefix)/opt/mysql-client@8.0/bin"
+  [[ -d "$p" ]] && export PATH="$p:$PATH"
+}
+{{ end -}}

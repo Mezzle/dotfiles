@@ -52,7 +52,6 @@ alias ls='ls --color'
 alias vim=nvim
 
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
 if [ -d ${HOME}/.zshrc.d ]; then
     for FILE in ${HOME}/.zshrc.d/*.zsh; do
@@ -60,3 +59,7 @@ if [ -d ${HOME}/.zshrc.d ]; then
         source "${FILE}"
     done
 fi
+
+# zoxide must be initialized last so its chpwd hook is registered after
+# any others (e.g. fnm --use-on-cd), otherwise `zoxide doctor` complains.
+eval "$(zoxide init --cmd cd zsh)"
