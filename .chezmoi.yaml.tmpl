@@ -25,7 +25,7 @@
 {{- if hasKey . "devMachine" -}}
 {{-   $devMachine = .devMachine -}}
 {{- else if $interactive -}}
-{{-   $devMachine = promptBool "Is this a devMachine machine?" $devMachine -}}
+{{-   $devMachine = promptBool "Is this a development machine?" $devMachine -}}
 {{- end -}}
 
 {{- $gaming := false }}
@@ -50,8 +50,6 @@
 {{- end }}
 
 progress: true
-
-sourceDir: "{{ .chezmoi.sourceDir }}"
 
 data:
   name: "{{ $name }}"

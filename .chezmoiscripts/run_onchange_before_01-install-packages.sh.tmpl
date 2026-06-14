@@ -1,14 +1,14 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew uninstall -q --zap alfred
-brew uninstall -q --zap coreutils
-brew uninstall -q --zap arc
-brew uninstall -q --zap proton-mail-bridge
-brew uninstall -q --zap protonvpn
-brew uninstall -q --zap kiro
-brew uninstall -q --zap antigravity
-brew uninstall -q --zap podman-desktop
+brew uninstall -q --zap alfred 2>/dev/null || true
+brew uninstall -q --zap coreutils 2>/dev/null || true
+brew uninstall -q --zap arc 2>/dev/null || true
+brew uninstall -q --zap proton-mail-bridge 2>/dev/null || true
+brew uninstall -q --zap protonvpn 2>/dev/null || true
+brew uninstall -q --zap kiro 2>/dev/null || true
+brew uninstall -q --zap antigravity 2>/dev/null || true
+brew uninstall -q --zap podman-desktop 2>/dev/null || true
 
 brew reinstall git chezmoi
 {{- end -}}

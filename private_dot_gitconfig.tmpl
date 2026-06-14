@@ -38,6 +38,10 @@
   insteadOf = https://github.com/GamerPowered
 [url "ssh://git@github.com/Majimez"]
   insteadOf = https://github.com/Majimez
+{{- if .work }}
+[url "ssh://git@github.com/chemist4u"]
+  insteadOf = https://github.com/chemist4u
+{{- end }}
 {{- if .signGitCommits }}
 [commit]
   gpgsign = true
