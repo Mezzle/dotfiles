@@ -1,6 +1,7 @@
 [".config/nvim"]
 type = "git-repo"
 url = "https://github.com/NvChad/NvChad.git"
+branch = "v2.5"
 refreshPeriod = "168h"
 
 [".local/share/zinit/zinit.git"]
