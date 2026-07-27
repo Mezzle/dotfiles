@@ -1,0 +1,13 @@
+{{ if .devMachine -}}
+# ~/.nub/bin holds nub and nubx; ~/.nub/node-shim holds a `node` that resolves the
+# project's pinned version at invocation time, so there is no chpwd hook to install.
+#
+# ~/.zshenv puts the shim on PATH for non-interactive shells, but .zshrc prepends
+# ${BREW_PREFIX}/bin afterwards, so re-seat both dirs at the front here — otherwise
+# Homebrew's node shadows the shim.
+path=(
+  "${HOME}/.nub/bin"
+  "${HOME}/.nub/node-shim"
+  ${path:#${HOME}/.nub/*}
+)
+{{- end }}

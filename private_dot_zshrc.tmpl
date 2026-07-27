@@ -61,5 +61,5 @@ if [ -d ${HOME}/.zshrc.d ]; then
 fi
 
 # zoxide must be initialized last so its chpwd hook is registered after
-# any others (e.g. fnm --use-on-cd), otherwise `zoxide doctor` complains.
+# any others, otherwise `zoxide doctor` complains.
 eval "$(zoxide init --cmd cd zsh)"

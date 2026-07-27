@@ -1,0 +1,4 @@
+{{ if .devMachine -}}
+# Registers a chpwd hook, so it has to run before zoxide's init in .zshrc.
+eval "$(direnv hook zsh)"
+{{- end }}

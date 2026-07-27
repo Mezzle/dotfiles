@@ -43,3 +43,14 @@ Thumbs.db
 .idea
 
 .vagrant
+
+# Agent tooling #
+#################
+
+/.claude/*local*
+/.claude/worktrees
+
+# Dependencies #
+################
+
+node_modules

@@ -60,7 +60,7 @@ mas "Bitwarden 2", id: 1352778147
 # Development machine specific packages
 brew "awscli"
 brew "bat"
-brew "fnm"
+brew "direnv"
 brew "gh"
 brew "jq"
 brew "node"
@@ -71,11 +71,7 @@ brew "trufflehog"
 cask "rapidapi"
 cask "jetbrains-toolbox"
 
-{{ if .work -}}
-cask "rancher"
-{{- else -}}
 cask "orbstack"
-{{- end }}
 {{- end }}
 
 {{ if .signGitCommits -}}
