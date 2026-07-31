@@ -64,7 +64,8 @@ brew "direnv"
 brew "gh"
 brew "jq"
 brew "node"
-brew "pnpm"
+# No `brew "pnpm"`: pnpm comes from `nub pm` via the ~/.nub/shims/pnpm shim, which
+# provisions the exact version each project pins. A brew pnpm would shadow it.
 brew "ripgrep"
 brew "trufflehog"
 

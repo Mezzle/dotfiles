@@ -2,12 +2,20 @@
 # ~/.nub/bin holds nub and nubx; ~/.nub/node-shim holds a `node` that resolves the
 # project's pinned version at invocation time, so there is no chpwd hook to install.
 #
-# ~/.zshenv puts the shim on PATH for non-interactive shells, but .zshrc prepends
-# ${BREW_PREFIX}/bin afterwards, so re-seat both dirs at the front here — otherwise
-# Homebrew's node shadows the shim.
+# ~/.nub/shims holds npm/npx/pnpm/pnpx/yarn/yarnpkg. Each routes through `nub pm` to the
+# exact package manager the project pins in packageManager, and *refuses* to run when it
+# is not the pinned one — so `npm install` in a pnpm repo can't write a competing
+# lockfile. This replaces corepack, so corepack stays disabled.
+# Re-run `nub pm shim` after `nub upgrade`. To bypass a shim, call the tool by absolute
+# path (e.g. ${BREW_PREFIX}/bin/npm); to drop the whole mechanism, `nub pm unshim`.
+#
+# ~/.zshenv puts these on PATH for non-interactive shells, but .zshrc prepends
+# ${BREW_PREFIX}/bin afterwards, so re-seat all three dirs at the front here —
+# otherwise Homebrew's node and pnpm shadow the shims.
 path=(
   "${HOME}/.nub/bin"
   "${HOME}/.nub/node-shim"
+  "${HOME}/.nub/shims"
   ${path:#${HOME}/.nub/*}
 )
 {{- end }}
