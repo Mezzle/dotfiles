@@ -1,14 +1,19 @@
 # Generic packages - all systems
 
 brew "chezmoi"
+brew "dockutil"
+brew "git"
 brew "grep"
 brew "fzf"
 brew "gnu-which"
 brew "htop"
 brew "mas"
+brew "mole"
 brew "neovim"
+brew "openssh"
 brew "speedtest-cli"
 brew "starship"
+brew "syncthing"
 brew "uutils-coreutils"
 brew "uutils-diffutils"
 brew "watch"
@@ -18,26 +23,35 @@ brew "zoxide"
 cask "1password"
 cask "1password-cli"
 cask "affinity"
+cask "appcleaner"
 cask "deskpad"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-comic-shanns-mono-nerd-font"
 cask "ghostty"
+cask "google-chrome"
 cask "jordanbaird-ice"
 cask "latest"
 cask "legcord"
 cask "logi-options+"
 cask "microsoft-office"
 cask "obsidian"
+cask "onyx"
 cask "pdf-expert"
 cask "private-internet-access"
 cask "raycast"
 cask "setapp"
 cask "spotify"
 cask "tailscale-app"
+cask "telegram"
 cask "vivaldi"
+cask "vlc"
 cask "whatsapp"
+cask "wispr-flow"
 
 mas "1Password for Safari", id: 1569813296
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "Parcel", id: 375589283
 
 {{ if .work -}}
@@ -64,15 +78,28 @@ brew "direnv"
 brew "gh"
 brew "jq"
 brew "node"
+brew "opencode"
+brew "pipx"
 # No `brew "pnpm"`: pnpm comes from `nub pm` via the ~/.nub/shims/pnpm shim, which
 # provisions the exact version each project pins. A brew pnpm would shadow it.
 brew "ripgrep"
 brew "trufflehog"
+brew "uv"
+brew "yamllint"
 
-cask "rapidapi"
+cask "chatgpt"
+# codexbar monitors Claude usage as well as Codex, so it outlives the Codex apps.
+cask "codexbar"
 cask "jetbrains-toolbox"
-
+cask "linear"
 cask "orbstack"
+cask "rapidapi"
+cask "visual-studio-code"
+
+# The Claude desktop app only. Claude Code is not the `claude-code` cask: that channel
+# never auto-updates, so .chezmoiscripts/run_onchange_before_03-install-claude-code.sh
+# uses the self-updating native installer instead.
+cask "claude"
 {{- end }}
 
 {{ if .signGitCommits -}}
@@ -83,5 +110,7 @@ brew "pinentry-mac"
 
 {{ if .gaming -}}
 # Gaming machine specific packages
+cask "es-de"
+cask "retroarch-metal"
 cask "steam"
 {{- end }}

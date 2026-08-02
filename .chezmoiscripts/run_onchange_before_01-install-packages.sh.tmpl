@@ -11,6 +11,15 @@ brew uninstall -q --zap antigravity 2>/dev/null || true
 brew uninstall -q --zap podman-desktop 2>/dev/null || true
 brew uninstall -q --zap fnm 2>/dev/null || true
 brew uninstall -q --zap rancher 2>/dev/null || true
+brew uninstall -q --zap rustdesk 2>/dev/null || true
+brew uninstall -q --zap opencode-desktop 2>/dev/null || true
+# The ChatGPT app replaces both Codex's discontinued desktop app and the codex CLI.
+brew uninstall -q --zap codex-app 2>/dev/null || true
+brew uninstall -q --zap codex 2>/dev/null || true
+
+# pnpm has to come from the ~/.nub/shims/pnpm shim, not Homebrew. (--zap is cask-only,
+# so formulae are uninstalled plainly.)
+brew uninstall -q pnpm 2>/dev/null || true
 
 brew reinstall git chezmoi
 {{- end -}}
