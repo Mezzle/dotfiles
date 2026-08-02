@@ -7,6 +7,12 @@ export _ZO_DOCTOR=0
 if [ -f "${HOME}/.cargo/env" ]; then
     . "${HOME}/.cargo/env"
 fi
+
+# ~/.local/bin holds tools that install themselves outside Homebrew: chezmoi (from
+# install.sh), ~/.local/bin/gpg-restart, and the `claude` symlink the Claude Code
+# native installer maintains. That installer appends this same line to ~/.zshrc, but
+# chezmoi owns that file and rewrites it on every apply, so it has to live here.
+export PATH="${HOME}/.local/bin:${PATH}"
 {{ if .devMachine }}
 # Non-interactive shells never source .zshrc, so nub goes on PATH here as well.
 # ~/.zshrc.d/99-nub.zsh re-seats all three dirs at the front for interactive shells,

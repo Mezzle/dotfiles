@@ -1,0 +1,15 @@
+{{- if .devMachine -}}
+#!/bin/bash
+set -eu
+
+# Claude Code ships as a Homebrew cask, but that channel never auto-updates. The native
+# installer updates itself in the background and re-points ~/.local/bin/claude at the
+# new version under ~/.local/share/claude/versions, so it only has to run once here.
+#
+# The installer also appends its own PATH line to ~/.zshrc; chezmoi owns that file and
+# rewrites it later in this same apply, and ~/.zshenv puts ~/.local/bin on PATH instead.
+if [[ ! -x "${HOME}/.local/bin/claude" ]]; then
+    echo "Installing Claude Code"
+    /bin/bash -c "$(curl -fsSL https://claude.ai/install.sh)"
+fi
+{{- end -}}
