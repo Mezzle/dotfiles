@@ -13,6 +13,8 @@ brew uninstall -q --zap fnm 2>/dev/null || true
 brew uninstall -q --zap rancher 2>/dev/null || true
 brew uninstall -q --zap rustdesk 2>/dev/null || true
 brew uninstall -q --zap opencode-desktop 2>/dev/null || true
+# Ice comes from jordanbaird-ice@beta now; the stable cask owns the same Ice.app.
+brew uninstall -q --zap jordanbaird-ice 2>/dev/null || true
 # The ChatGPT app replaces both Codex's discontinued desktop app and the codex CLI.
 brew uninstall -q --zap codex-app 2>/dev/null || true
 brew uninstall -q --zap codex 2>/dev/null || true

@@ -29,7 +29,9 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-comic-shanns-mono-nerd-font"
 cask "ghostty"
 cask "google-chrome"
-cask "jordanbaird-ice"
+# Ice ships its interesting work on the beta channel; both casks install the same
+# Ice.app, so only one can be present.
+cask "jordanbaird-ice@beta"
 cask "latest"
 cask "legcord"
 cask "logi-options+"
