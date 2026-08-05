@@ -21,4 +21,14 @@ export PATH="${HOME}/.local/bin:${PATH}"
 # manager each project pins via packageManager and runs it on the project's Node
 # (corepack's job), refusing to run a package manager the project does not pin.
 export PATH="${HOME}/.nub/bin:${HOME}/.nub/node-shim:${HOME}/.nub/shims:${PATH}"
+
+# Netskope (Chemist4U's SWG) TLS-inspects some upstreams with a private root CA.
+# curl/browsers trust it via the macOS keychain, but Node.js ships its own CA
+# bundle and ignores the keychain -- so pnpm/node/cdk/tsx fail with
+# SELF_SIGNED_CERT_IN_CHAIN on inspected hosts (e.g. pkg-npm.githubusercontent.com,
+# the GitHub Packages download CDN). run_onchange_before_04-export-netskope-ca.sh
+# exports the CA from the System keychain; point Node at it when it is present.
+if [ -f "${HOME}/.certs/netskope-ca.pem" ]; then
+    export NODE_EXTRA_CA_CERTS="${HOME}/.certs/netskope-ca.pem"
+fi
 {{- end }}

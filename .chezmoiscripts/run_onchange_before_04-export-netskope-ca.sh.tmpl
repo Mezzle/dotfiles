@@ -1,0 +1,25 @@
+{{- if .devMachine -}}
+#!/bin/sh
+set -eu
+
+# Export the Netskope root CA from the System keychain so Node.js trusts the
+# TLS-inspected upstreams that Chemist4U's SWG rewrites. Node ships its own CA
+# bundle and ignores the macOS keychain, so pnpm/node/cdk/tsx would otherwise fail
+# with SELF_SIGNED_CERT_IN_CHAIN. ~/.zshenv points NODE_EXTRA_CA_CERTS at the result.
+#
+# On a machine that isn't behind Netskope the keychain has no such certs and the
+# export is empty; we skip writing the file so the ~/.zshenv guard stays a no-op.
+certs_dir="${HOME}/.certs"
+bundle="${certs_dir}/netskope-ca.pem"
+tmp="$(mktemp)"
+
+security find-certificate -a -c ca.innox.goskope.com -p /Library/Keychains/System.keychain >  "$tmp" 2>/dev/null || true
+security find-certificate -a -c certadmin            -p /Library/Keychains/System.keychain >> "$tmp" 2>/dev/null || true
+
+if [ -s "$tmp" ]; then
+    mkdir -p "$certs_dir"
+    mv "$tmp" "$bundle"
+else
+    rm -f "$tmp"
+fi
+{{- end -}}
