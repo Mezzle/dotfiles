@@ -22,6 +22,7 @@ export PATH="${HOME}/.local/bin:${PATH}"
 # (corepack's job), refusing to run a package manager the project does not pin.
 export PATH="${HOME}/.nub/bin:${HOME}/.nub/node-shim:${HOME}/.nub/shims:${PATH}"
 
+{{- if .work }}
 # Netskope (Chemist4U's SWG) TLS-inspects some upstreams with a private root CA.
 # curl/browsers trust it via the macOS keychain, but Node.js ships its own CA
 # bundle and ignores the keychain -- so pnpm/node/cdk/tsx fail with
@@ -31,4 +32,5 @@ export PATH="${HOME}/.nub/bin:${HOME}/.nub/node-shim:${HOME}/.nub/shims:${PATH}"
 if [ -f "${HOME}/.certs/netskope-ca.pem" ]; then
     export NODE_EXTRA_CA_CERTS="${HOME}/.certs/netskope-ca.pem"
 fi
+{{- end}}
 {{- end }}
