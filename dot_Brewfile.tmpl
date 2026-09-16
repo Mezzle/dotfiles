@@ -77,11 +77,9 @@ brew "bat"
 brew "direnv"
 brew "gh"
 brew "jq"
-brew "node"
-brew "opencode"
 brew "pipx"
-# No `brew "pnpm"`: pnpm comes from `nub pm` via the ~/.nub/shims/pnpm shim, which
-# provisions the exact version each project pins. A brew pnpm would shadow it.
+# Node and package managers come from Mise. Keep them out of Homebrew so one
+# resolver serves macOS, Powder, interactive shells, and remote tools.
 brew "ripgrep"
 brew "trufflehog"
 brew "uv"
@@ -96,9 +94,8 @@ cask "orbstack"
 cask "rapidapi"
 cask "visual-studio-code"
 
-# The Claude desktop app only. Claude Code is not the `claude-code` cask: that channel
-# never auto-updates, so .chezmoiscripts/run_onchange_before_03-install-claude-code.sh
-# uses the self-updating native installer instead.
+# The Claude desktop app only. Claude Code is managed by Mise with the other
+# terminal agents, not by this cask list.
 cask "claude"
 {{- end }}
 
