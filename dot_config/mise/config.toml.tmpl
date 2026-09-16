@@ -1,0 +1,19 @@
+# Shared developer toolchain for macOS and Linux development machines. This
+# file is ignored unless the chezmoi `devMachine` profile is enabled.
+# Repositories remain responsible for exact runtime pins through mise.toml,
+# .node-version, .nvmrc, or package.json's devEngines/packageManager fields.
+
+[tools]
+node = "24"
+pnpm = "latest"
+"npm:@openai/codex" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:t3" = "latest"
+"npm:opencode-ai" = "latest"
+
+[settings]
+# package.json remains the source of truth when a repository pins pnpm.
+idiomatic_version_file_enable_tools = ["node", "pnpm"]
+
+[settings.npm]
+package_manager = "pnpm"

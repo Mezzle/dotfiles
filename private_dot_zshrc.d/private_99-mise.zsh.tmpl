@@ -1,0 +1,7 @@
+{{ if .devMachine -}}
+# `mise activate` adds directory-aware tool selection for interactive shells.
+# ~/.zshenv already exposes Mise shims to non-interactive processes.
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+{{- end }}

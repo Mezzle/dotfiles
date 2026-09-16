@@ -4,3 +4,7 @@ LICENSE
 README.md
 install.sh
 key.txt.age
+{{ if not .devMachine -}}
+.config/mise/config.toml
+.zshrc.d/99-mise.zsh
+{{- end }}
