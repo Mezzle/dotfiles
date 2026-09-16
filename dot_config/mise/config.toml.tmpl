@@ -13,9 +13,12 @@ fzf = "latest"
 direnv = "latest"
 zoxide = "latest"
 "npm:@openai/codex" = "latest"
-"npm:@anthropic-ai/claude-code" = "latest"
+# These agent CLIs download their platform-native binaries from postinstall.
+# Keep lifecycle permission scoped to each tool's install graph; it does not
+# alter pnpm's behaviour inside development repositories.
+"npm:@anthropic-ai/claude-code" = { version = "latest", allow_builds = true }
 "npm:t3" = "latest"
-"npm:opencode-ai" = "latest"
+"npm:opencode-ai" = { version = "latest", allow_builds = true }
 
 [settings]
 # package.json remains the source of truth when a repository pins pnpm.
