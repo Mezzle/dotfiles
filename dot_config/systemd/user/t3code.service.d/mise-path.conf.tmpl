@@ -1,0 +1,4 @@
+[Service]
+# systemd user services do not read ~/.zshenv. Keep T3's service able to find
+# the CLIs managed by Mise without granting it an interactive shell profile.
+Environment="PATH=%h/.local/share/mise/shims:%h/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

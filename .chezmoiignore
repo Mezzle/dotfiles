@@ -8,3 +8,6 @@ key.txt.age
 .config/mise/config.toml
 .zshrc.d/99-mise.zsh
 {{- end }}
+{{ if not (and .devMachine (eq .chezmoi.os "linux")) -}}
+.config/systemd/user/t3code.service.d/mise-path.conf
+{{- end }}
