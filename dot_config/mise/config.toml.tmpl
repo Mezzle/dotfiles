@@ -14,17 +14,15 @@ direnv = "latest"
 zoxide = "latest"
 "npm:@openai/codex" = "latest"
 # These agent CLIs download their platform-native binaries from postinstall.
-# Mise normally suppresses lifecycle scripts; permit them only while installing
-# these reviewed global tools. This does not alter project pnpm behaviour.
-"npm:@anthropic-ai/claude-code" = { version = "latest", npm_args = "--ignore-scripts=false" }
+# Permit those reviewed packages to run lifecycle scripts during mise installs.
+# Other packages and project pnpm installs keep their normal script policy.
+"npm:@anthropic-ai/claude-code" = { version = "latest", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:t3" = "latest"
-"npm:opencode-ai" = { version = "latest", npm_args = "--ignore-scripts=false" }
+"npm:opencode-ai" = { version = "latest", allow_builds = ["opencode-ai"] }
 
 [settings]
 # package.json remains the source of truth when a repository pins pnpm.
 idiomatic_version_file_enable_tools = ["node", "pnpm"]
 
 [settings.npm]
-# npm's lifecycle behaviour is required for Claude Code and OpenCode's native
-# launchers. This controls Mise's global-agent installer only, not repositories.
-package_manager = "npm"
+package_manager = "pnpm"
