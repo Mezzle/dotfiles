@@ -19,6 +19,11 @@ security find-certificate -a -c certadmin            -p /Library/Keychains/Syste
 if [ -s "$tmp" ]; then
     mkdir -p "$certs_dir"
     mv "$tmp" "$bundle"
+    # Python tools (Homebrew semgrep, requests, certifi) need a full root bundle,
+    # not just the extra CA, and fail with "CA cert does not include key usage
+    # extension" without one. ~/.zshenv points SSL_CERT_FILE/REQUESTS_CA_BUNDLE
+    # at this: the macOS system roots plus Netskope's CA.
+    cat /etc/ssl/cert.pem "$bundle" > "${certs_dir}/ca-bundle-netskope.pem"
 else
     rm -f "$tmp"
 fi

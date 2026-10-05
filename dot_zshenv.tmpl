@@ -27,5 +27,30 @@ export PATH="${HOME}/.local/share/mise/shims:${PATH}"
 if [ -f "${HOME}/.certs/netskope-ca.pem" ]; then
     export NODE_EXTRA_CA_CERTS="${HOME}/.certs/netskope-ca.pem"
 fi
+# Python and OpenSSL tools take a whole bundle rather than an extra CA; the same
+# script writes system roots + Netskope here.
+if [ -f "${HOME}/.certs/ca-bundle-netskope.pem" ]; then
+    export SSL_CERT_FILE="${SSL_CERT_FILE:-${HOME}/.certs/ca-bundle-netskope.pem}"
+    export REQUESTS_CA_BUNDLE="${REQUESTS_CA_BUNDLE:-${HOME}/.certs/ca-bundle-netskope.pem}"
+fi
+
+# Chemist4U repos read ${NODE_AUTH_TOKEN} in .npmrc for the GitHub npm registry,
+# so pnpm fails without it. `gh auth token` costs ~140ms of keychain access, too
+# much for every shell, so cache it (0600) and refresh daily. After
+# `gh auth refresh`, delete the cache to pick up the new token at once.
+if [ -z "${NODE_AUTH_TOKEN:-}" ] && command -v gh >/dev/null 2>&1; then
+    () {
+        local cache="${XDG_CACHE_HOME:-${HOME}/.cache}/gh-node-auth-token"
+        local fresh=( "$cache"(N.mh-24) )
+        if (( ! ${#fresh} )); then
+            local token
+            token="$(gh auth token 2>/dev/null)" || token=""
+            [[ -n "$token" ]] || return 0
+            mkdir -p "${cache:h}"
+            ( umask 077; print -r -- "$token" > "$cache" )
+        fi
+        export NODE_AUTH_TOKEN="$(<"$cache")"
+    }
+fi
 {{- end}}
 {{- end }}
