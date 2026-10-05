@@ -6,6 +6,8 @@ export PATH="${BREW_PREFIX}/opt/uutils-diffutils/libexec/uubin:${PATH}"
 export MANPATH="${BREW_PREFIX}/opt/uutils-coreutils/libexec/uuman:${MANPATH}"
 export MANPATH="${BREW_PREFIX}/opt/uutils-diffutils/libexec/uuman:${MANPATH}"
 
-alias ls="ls --color=always"
+# auto: colour only when stdout is a terminal, so piped or captured output
+# (scripts, agent tools) gets plain names rather than raw ANSI escapes.
+alias ls="ls --color=auto"
 disable which
 {{ end -}}

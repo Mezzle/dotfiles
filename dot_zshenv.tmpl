@@ -3,6 +3,14 @@
 # before `zoxide init` runs in .zshrc, in every shell type. Interactive use is fine.
 export _ZO_DOCTOR=0
 
+# Pass an unmatched glob through literally (bash's behaviour) instead of
+# aborting the command with "no matches found". Agent harnesses run commands
+# through non-interactive zsh, so an argument like `--include=*.ts` would
+# otherwise fail before the tool even starts. Set here rather than in .zshrc so
+# every zsh reads it, including agents (Codex, opencode, T3) that never source
+# .zshrc. Nothing interactive here relies on the default `nomatch`.
+setopt no_nomatch
+
 # rustup owns this file, not chezmoi, so it is absent until rustup has run.
 if [ -f "${HOME}/.cargo/env" ]; then
     . "${HOME}/.cargo/env"
