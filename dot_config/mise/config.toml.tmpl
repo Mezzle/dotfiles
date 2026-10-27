@@ -18,7 +18,8 @@ zoxide = "latest"
 # Other packages and project pnpm installs keep their normal script policy.
 "npm:@anthropic-ai/claude-code" = { version = "latest", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:t3" = "latest"
-"npm:opencode-ai" = { version = "latest", allow_builds = ["opencode-ai"] }
+# OpenCode 2 moved to @opencode/cli; opencode-ai still publishes version 1.
+"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 
 [settings]
 # package.json remains the source of truth when a repository pins pnpm.

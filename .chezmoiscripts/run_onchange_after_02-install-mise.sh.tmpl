@@ -11,5 +11,7 @@ if [[ ! -x "${HOME}/.local/bin/mise" ]]; then
     curl -fsSL https://mise.run | sh
 fi
 
+# Both OpenCode packages provide `opencode`; remove V1 before installing V2.
+"${HOME}/.local/bin/mise" uninstall --all npm:opencode-ai
 "${HOME}/.local/bin/mise" install
 {{- end }}
