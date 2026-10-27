@@ -1,0 +1,33 @@
+{{- if .devMachine -}}
+#!/bin/bash
+set -euo pipefail
+
+# Agent skills, installed globally with skills.sh (https://skills.sh). This script
+# is the manifest: edit a list and `chezmoi apply` re-runs it. Upstream updates are
+# manual: `npx skills update -g -y`.
+agents=(claude-code codex opencode cursor droid gemini-cli pi)
+
+add() {
+    local source="$1"
+    shift
+    npx -y skills@latest add "$source" -g -y -a "${agents[@]}" -s "$@"
+}
+
+# Own skills. Only the shipping buckets are listed in its plugin.json.
+add Mezzle/skills '*'
+
+# Not `pr`: Mezzle/skills' file-pr replaces it.
+add mattpocock/skills \
+    grilling grill-me grill-with-docs wayfinder \
+    code-review codebase-design diagnosing-bugs domain-modeling \
+    handoff claude-handoff implement implement-spec improve-codebase-architecture \
+    prototype research retro setup-matt-pocock-skills tdd teach \
+    to-questionnaire to-spec to-tickets triage wait-what wizard writing-for-agents
+
+add backnotprop/pstack unslop
+add ayghri/i-have-adhd i-have-adhd
+# ~/.claude/CLAUDE.md invokes /stop-slop.
+add hardikpandya/stop-slop stop-slop
+add schpet/linear-cli linear-cli
+add vercel-labs/skills find-skills
+{{- end }}
