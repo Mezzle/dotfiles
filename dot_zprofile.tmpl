@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "darwin" -}}
+# App integrations belong in login shells; runtime selection stays with Mise.
+if [[ -f "$HOME/.orbstack/shell/init.zsh" ]]; then
+  source "$HOME/.orbstack/shell/init.zsh"
+fi
+for app_bin in "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" /Applications/Obsidian.app/Contents/MacOS; do
+  [[ -d "$app_bin" ]] && path+=("$app_bin")
+done
+# App integrations may modify PATH. Restore Mise's precedence.
+{{ if .devMachine -}}
+path=("$HOME/.local/share/mise/shims" $path)
+{{ end -}}
+typeset -U path
+{{ end -}}

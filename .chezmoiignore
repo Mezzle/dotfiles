@@ -11,3 +11,22 @@ key.txt.age
 {{ if not (and .devMachine (eq .chezmoi.os "linux")) -}}
 .config/systemd/user/t3code.service.d/mise-path.conf
 {{- end }}
+
+{{ if not .devMachine -}}
+.claude/**
+.codex/AGENTS.md
+.codex/agents/tldraw-offline.toml
+.config/gh/config.yml
+Library/Application Support/Code/User/settings.json
+{{ end -}}
+{{ if not .tldrawOffline -}}
+.claude/agents/tldraw-offline.md
+.codex/agents/tldraw-offline.toml
+{{ end -}}
+
+{{ if or (not .devMachine) (ne .chezmoi.os "darwin") -}}
+Library/Application Support/Code/User/settings.json
+{{ end -}}
+{{ if not (or (index . "npmGithubTokenRef") (index . "npmjsTokenRef")) -}}
+.npmrc
+{{ end -}}

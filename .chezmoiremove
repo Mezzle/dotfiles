@@ -22,3 +22,18 @@
 .config/mise/config.toml
 .zshrc.d/99-mise.zsh
 {{- end }}
+
+# Superseded by Mise-managed tools.
+.zshrc.d/99-pnpm.zsh
+.zshrc.d/99-opencode.zsh
+
+# External writing uses unslop.
+.agents/skills/stop-slop
+.agents/skills/stop-slop/**
+.claude/skills/stop-slop
+.codex/skills/stop-slop
+.config/opencode/skills/stop-slop
+{{ if not .tldrawOffline -}}
+.claude/agents/tldraw-offline.md
+.codex/agents/tldraw-offline.toml
+{{ end -}}

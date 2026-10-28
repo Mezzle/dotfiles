@@ -1,0 +1,6 @@
+{{ with (index . "npmGithubTokenRef") -}}
+//npm.pkg.github.com/:_authToken={{ onepasswordRead . }}
+{{ end -}}
+{{ with (index . "npmjsTokenRef") -}}
+//registry.npmjs.org/:_authToken={{ onepasswordRead . }}
+{{ end -}}

@@ -49,6 +49,15 @@
 {{-   $signingKey = promptString "Signing Key?" $signingKey -}}
 {{- end }}
 
+{{- $tldrawOffline := false -}}
+{{- if hasKey . "tldrawOffline" -}}
+{{-   $tldrawOffline = .tldrawOffline -}}
+{{- else if eq .chezmoi.os "darwin" -}}
+{{-   if or (stat "/Applications/tldraw offline.app") (stat (joinPath .chezmoi.homeDir "Applications/tldraw offline.app")) -}}
+{{-     $tldrawOffline = true -}}
+{{-   end -}}
+{{- end }}
+
 progress: true
 
 data:
@@ -59,3 +68,10 @@ data:
   gaming: {{ $gaming }}
   signGitCommits: {{ $gpgSign }}
   signingKey: {{ $signingKey }}
+  tldrawOffline: {{ $tldrawOffline }}
+{{ with (index . "npmGithubTokenRef") }}
+  npmGithubTokenRef: {{ . | quote }}
+{{ end }}
+{{ with (index . "npmjsTokenRef") }}
+  npmjsTokenRef: {{ . | quote }}
+{{ end }}

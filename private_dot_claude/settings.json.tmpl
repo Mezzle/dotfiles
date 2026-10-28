@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [],
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash {{ .chezmoi.homeDir }}/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "obsidian@obsidian-skills": true,
+    "posthog@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "advisorModel": "fable",
+  "askUserQuestionTimeout": "never",
+  "tui": "fullscreen",
+  "theme": "auto",
+  "verbose": false,
+  "preferredNotifChannel": "ghostty",
+  "showTurnDuration": true,
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "hooks": { {{ if .tldrawOffline }}
+    "SubagentStart": [{"matcher": "tldraw-offline", "hooks": [{"type": "command", "command": "sh '{{ .chezmoi.homeDir }}/skills/tldraw-offline/inject-server-context.sh' SubagentStart"}]}]
+  {{ end }} }
+}

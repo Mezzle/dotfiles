@@ -1,0 +1,8 @@
+{
+  "editor.fontFamily": "\"ComicShannsMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 17,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Alt Catppuccin Latte"
+}
