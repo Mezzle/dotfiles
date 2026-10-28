@@ -17,3 +17,6 @@ For version-specific docs, use `/org/project/version` from the `library` output 
 If a command fails with a quota error, inform the user and suggest `npx ctx7@latest login` or setting `CONTEXT7_API_KEY` env var for higher limits. Do not silently fall back to training data.
 Run Context7 CLI requests outside Codex's default sandbox. If a Context7 CLI command fails with DNS or network errors such as ENOTFOUND, host resolution failures, or fetch failed, rerun it outside the sandbox instead of retrying inside the sandbox.
 <!-- context7 -->
+
+Personal work uses 1Password (`op`); work (e.g. Chemist4U repos) uses Bitwarden (`bw`).
+Handle any credential, token, API key or password through the `secrets` skill.
