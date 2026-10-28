@@ -1,0 +1,12 @@
+{{- if and .devMachine (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+set -euo pipefail
+
+# Codex prefers system bubblewrap. Ubuntu's AppArmor policy attaches to
+# /usr/bin/bwrap; the npm-bundled helper may miss that user-namespace policy.
+# Keep namespace restrictions enabled and use the distribution package.
+# Claude's sandbox additionally needs socat for its controlled network proxy.
+if command -v apt-get >/dev/null 2>&1 && { [ ! -x /usr/bin/bwrap ] || ! command -v socat >/dev/null 2>&1; }; then
+  sudo apt-get install -y bubblewrap socat
+fi
+{{- end }}

@@ -30,3 +30,7 @@ Library/Application Support/Code/User/settings.json
 {{ if not (or (index . "npmGithubTokenRef") (index . "npmjsTokenRef")) -}}
 .npmrc
 {{ end -}}
+{{ if ne .chezmoi.os "darwin" -}}
+Library
+Library/**
+{{- end }}
