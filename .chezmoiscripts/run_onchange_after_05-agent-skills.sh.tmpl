@@ -4,7 +4,7 @@ set -euo pipefail
 
 # Agent skills, installed globally with skills.sh (https://skills.sh). This script
 # is the manifest: edit a list and `chezmoi apply` re-runs it. Upstream updates are
-# manual: `npx skills update -g -y`.
+# manual: `npx skills update -g -y`, then rerun this hook to restore editable links.
 agents=(claude-code codex opencode cursor droid gemini-cli pi)
 
 add() {
@@ -13,12 +13,12 @@ add() {
     npx -y skills@latest add "$source" -g -y -a "${agents[@]}" -s "$@"
 }
 
-# Own skills. Only the shipping buckets are listed in its plugin.json.
+# Own skills, including promoted Wayfinder. Publish it before applying this hook.
 add Mezzle/skills '*'
 
-# Not `pr`: Mezzle/skills' file-pr replaces it.
+# Mezzle owns file-pr and Wayfinder; keep Matt's complementary setup/triage skills.
 add mattpocock/skills \
-    grilling grill-me grill-with-docs wayfinder \
+    grilling grill-me grill-with-docs \
     code-review codebase-design diagnosing-bugs domain-modeling \
     handoff claude-handoff implement implement-spec improve-codebase-architecture \
     prototype research retro setup-matt-pocock-skills tdd teach \
@@ -29,4 +29,7 @@ add backnotprop/pstack unslop
 add ayghri/i-have-adhd i-have-adhd
 add schpet/linear-cli linear-cli
 add vercel-labs/skills find-skills
+# Global installs replace agent links. Restore the editable Codex/Claude checkout
+# last, including when only this hook changes; lock ownership remains Mezzle/skills.
+{{ template "install-mezzle-skills.sh" . }}
 {{- end }}

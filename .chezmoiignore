@@ -34,3 +34,5 @@ Library/Application Support/Code/User/settings.json
 Library
 Library/**
 {{- end }}
+
+tests/
