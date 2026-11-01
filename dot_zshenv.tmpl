@@ -11,6 +11,16 @@ export _ZO_DOCTOR=0
 # .zshrc. Nothing interactive here relies on the default `nomatch`.
 setopt no_nomatch
 
+# Split unquoted variables (bash's behaviour) in Claude Code's Bash tool, so
+# `S="ssh -i key host"; $S true` runs ssh instead of failing with "command not
+# found". This has to be here: the tool's shell is `zsh -c`, which reads this
+# file on every call before sourcing its profile snapshot, and the snapshot
+# leaves the option alone. Interactive zsh keeps the default, even when started
+# from an agent. Non-interactive zsh scripts run by Claude Code also split.
+if [[ -n "${CLAUDECODE}" && ! -o interactive ]]; then
+    setopt sh_word_split
+fi
+
 # rustup owns this file, not chezmoi, so it is absent until rustup has run.
 if [ -f "${HOME}/.cargo/env" ]; then
     . "${HOME}/.cargo/env"
