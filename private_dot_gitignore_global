@@ -57,3 +57,5 @@ node_modules
 
 # Per-project Claude permissions and local settings
 **/.claude/settings.local.json
+
+**/.claude/.cc-writes/
