@@ -1,0 +1,11 @@
+{{- if and .devMachine (not .work) -}}
+#!/bin/bash
+set -euo pipefail
+
+# Restart an existing service when its supported environment file changes.
+# A service installed later reads the file on its first start.
+# T3 service environment hash: {{ includeTemplate "private_dot_t3/private_service.env.tmpl" . | sha256sum }}
+if command -v t3 >/dev/null 2>&1 && t3 service status >/dev/null 2>&1; then
+  t3 service restart
+fi
+{{- end }}
