@@ -91,11 +91,11 @@ def main():
                'PATH': str(bin_dir) + os.pathsep + os.environ['PATH'],
                'TEST_AGENTS': json.dumps(AGENTS), 'TEST_PATHS': json.dumps(PATHS)}
         hooks = []
-        for number in ['04', '05']:
-            template = next((ROOT / '.chezmoiscripts').glob(f'*_{number}-*.tmpl'))
+        for name in ['04-install-mezzle-skills', '05-agent-skills']:
+            template = ROOT / '.chezmoiscripts' / f'run_onchange_after_{name}.sh.tmpl'
             rendered = run('chezmoi', '--source', str(ROOT), '--config', str(config),
                            'execute-template', input=template.read_text(), env=env)
-            script = base / f'{number}.sh'
+            script = base / f'{name}.sh'
             script.write_text(rendered)
             run('bash', '-n', str(script))
             hooks.append(script)
