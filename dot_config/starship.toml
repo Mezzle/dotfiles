@@ -159,8 +159,7 @@ format = '[$symbol($version )]($style)'
 
 [hostname]
 format = '[$hostname]($style) '
-# Rex sessions do not necessarily set SSH variables; always identify the machine.
-ssh_only = false
+ssh_only = true
 
 [java]
 disabled = true
