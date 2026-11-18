@@ -26,6 +26,14 @@
   defaultBranch = main
 [pull]
   ff = only
+{{- if eq .chezmoi.hostname "Cube" }}
+# Cube is driven remotely by agents, where nobody can approve a 1Password SSH
+# prompt. Send GitHub git traffic over HTTPS so the gh credential helper below
+# authenticates with the keychain token instead.
+[url "https://github.com/"]
+  insteadOf = git@github.com:
+  insteadOf = ssh://git@github.com/
+{{- else }}
 [url "ssh://git@github.com/Mezzle"]
   insteadOf = https://github.com/Mezzle
 [url "ssh://git@github.com/sane-defaults"]
@@ -41,6 +49,7 @@
 {{- if .work }}
 [url "ssh://git@github.com/chemist4u"]
   insteadOf = https://github.com/chemist4u
+{{- end }}
 {{- end }}
 {{- if .signGitCommits }}
 [commit]
