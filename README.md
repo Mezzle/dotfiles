@@ -34,6 +34,10 @@ only references. Avoid sharing rendered diffs for secret-bearing files.
 Use individual secret references for other CLI configuration when needed.
 Raycast's session tokens and agent OAuth state remain owned by their apps.
 
+For the Environments MCP server, turn on Settings > Developer > Integrate with
+MCP clients in the 1Password app, then run `chezmoi apply`. On development
+machines this registers `1password-mcp` with Claude Code, Codex, OpenCode and pi.
+
 ## Agent configuration
 
 Personal Claude instructions, documentation rules, status line, and preferences

@@ -1,0 +1,18 @@
+{{- if and .devMachine (lookPath "1password-mcp") -}}
+#!/bin/bash
+set -euo pipefail
+
+# These agents' MCP configs also hold machine-local servers, so register through
+# their CLIs rather than managing the files. Claude Code gets the server from the
+# plugin in settings.json. 1password-mcp only exists once 1Password's "Integrate
+# with MCP clients" is on; finding it changes this render, so apply then re-runs it.
+if command -v codex >/dev/null 2>&1; then
+    codex mcp add 1password -- 1password-mcp
+fi
+if command -v opencode >/dev/null 2>&1; then
+    opencode mcp add 1password --global -- 1password-mcp
+fi
+if command -v pi >/dev/null 2>&1; then
+    pi mcp add 1password -- 1password-mcp
+fi
+{{- end }}
