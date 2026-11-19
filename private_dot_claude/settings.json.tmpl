@@ -14,7 +14,8 @@
   },
   "enabledPlugins": {
     "obsidian@obsidian-skills": true,
-    "posthog@claude-plugins-official": true
+    "posthog@claude-plugins-official": true{{ if lookPath "1password-mcp" }},
+    "1password@1password": true{{ end }}
   },
   "extraKnownMarketplaces": {
     "obsidian-skills": {
@@ -22,7 +23,13 @@
         "source": "github",
         "repo": "kepano/obsidian-skills"
       }
-    }
+    }{{ if lookPath "1password-mcp" }},
+    "1password": {
+      "source": {
+        "source": "github",
+        "repo": "1Password/1password-claude-plugin"
+      }
+    }{{ end }}
   },
   "effortLevel": "high",
   "advisorModel": "fable",

@@ -1,0 +1,14 @@
+{{- if and .devMachine (lookPath "1password-mcp") -}}
+#!/bin/bash
+set -euo pipefail
+
+# These agents' MCP configs also hold machine-local servers, so register through
+# their CLIs rather than managing the files. Claude Code gets the server from the
+# plugin in settings.json. 1password-mcp only exists once 1Password's "Integrate
+# with MCP clients" is on; finding it changes this render, so apply then re-runs it.
+# Hook 02 installs the agents with mise, and they may not be on this apply's PATH.
+mise="${HOME}/.local/bin/mise"
+"${mise}" exec -- codex mcp add 1password -- 1password-mcp
+"${mise}" exec -- opencode mcp add 1password --global -- 1password-mcp
+"${mise}" exec -- pi mcp add 1password -- 1password-mcp
+{{- end }}
