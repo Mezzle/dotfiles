@@ -39,6 +39,8 @@ Raycast's session tokens and agent OAuth state remain owned by their apps.
 Personal Claude instructions, documentation rules, status line, and preferences
 are tracked. Deja hooks and commands are deliberately excluded. Project-derived
 Claude auto-mode environment assumptions are excluded from global settings.
+`cleanupPeriodDays` is 3650 so Claude Code keeps transcripts until the session
+archive (`Mezzle/hansard`) collects them; the default sweep deletes them after 30 days.
 Skills are installed by the manifest in `.chezmoiscripts`; external writing uses
 `unslop`.
 
