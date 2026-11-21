@@ -19,7 +19,8 @@ for the mapping cheatsheet and `:Lazy` for plugin management.
 
 Interactive shells check once a day, in the background, whether this repo has
 new commits. If it has, the next new shell prints one line suggesting
-`chezmoi update`. The check uses anonymous HTTPS, so it never prompts for SSH
+`chezmoi update`, and starship shows 󰚰 in the prompt until an apply brings
+those commits in. The check uses anonymous HTTPS, so it never prompts for SSH
 keys. When it fails it prints nothing and waits a day before trying again. To
 check sooner, delete `~/.cache/dotfiles-update/checked`.
 
