@@ -15,6 +15,15 @@ tracked here without its Git
 checkout. Lazy installs NvChad and its plugins on first launch. Use Space-ch
 for the mapping cheatsheet and `:Lazy` for plugin management.
 
+## Update check
+
+Interactive shells check once a day, in the background, whether this repo has
+new commits. If it has, the next new shell prints one line suggesting
+`chezmoi update`, and starship shows 󰚰 in the prompt until an apply brings
+those commits in. The check uses anonymous HTTPS, so it never prompts for SSH
+keys. When it fails it prints nothing and waits a day before trying again. To
+check sooner, delete `~/.cache/dotfiles-update/checked`.
+
 ## 1Password
 
 1Password and its CLI are installed through the Brewfile. Enable desktop app

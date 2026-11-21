@@ -118,6 +118,13 @@ disabled = true
 [deno]
 disabled = true
 
+# Set by ~/.zshrc.d/99-dotfiles-update.zsh while the dotfiles repo is behind.
+[env_var.DOTFILES_UPDATE]
+symbol = "󰚰"
+style = "yellow"
+format = "[$symbol]($style) "
+description = "dotfiles updates available: run chezmoi update"
+
 [docker_context]
 format = "[$symbol$context]($style) "
 
