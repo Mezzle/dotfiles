@@ -33,9 +33,10 @@ brewUpdateCheck: false # default: on for macOS, off on work machines
 miseUpdateCheck: true  # default: on for development machines
 ```
 
-The brew check runs `brew update` to refresh package metadata, so leave it off
-where Homebrew needs admin rights. Machines set up before these keys existed
-have both checks off until `chezmoi init` writes the defaults.
+The brew check runs `brew update`, the same refresh brew does before its own
+commands, so leave it off where Homebrew needs admin rights. Machines set up
+before these keys existed have both checks off until `chezmoi init` writes the
+defaults.
 
 ## 1Password
 

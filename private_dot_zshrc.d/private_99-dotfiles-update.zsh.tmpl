@@ -78,7 +78,9 @@
                 (( ${+commands[brew]} )) || exit
                 # outdated reads local metadata, so refresh it first.
                 brew update --quiet >/dev/null || exit
-                local -a outdated=( ${(f)"$(HOMEBREW_NO_AUTO_UPDATE=1 brew outdated --quiet)"} )
+                local out
+                out="$(HOMEBREW_NO_AUTO_UPDATE=1 brew outdated --quiet)" || exit
+                local -a outdated=( ${(f)out} )
                 (( ${#outdated} )) || exit
                 print -r -- "brew: ${#outdated} outdated; run 'brew upgrade'"
             )
@@ -88,7 +90,9 @@
                 (( ${+commands[mise]} )) || exit
                 # From $HOME, so only the global config's tools count.
                 cd -q ~ || exit
-                local -a outdated=( ${(f)"$(mise outdated --no-header)"} )
+                local out
+                out="$(mise outdated --no-header)" || exit
+                local -a outdated=( ${(f)out} )
                 (( ${#outdated} )) || exit
                 print -r -- "mise: ${#outdated} outdated; run 'mise upgrade'"
             )
