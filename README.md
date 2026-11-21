@@ -24,6 +24,19 @@ those commits in. The check uses anonymous HTTPS, so it never prompts for SSH
 keys. When it fails it prints nothing and waits a day before trying again. To
 check sooner, delete `~/.cache/dotfiles-update/checked`.
 
+The same check can count outdated Homebrew packages and mise tools, adding a
+line for each to that notice. It never upgrades anything. Switch them in the
+local chezmoi config's `data` mapping:
+
+```yaml
+brewUpdateCheck: false # default: on for macOS, off on work machines
+miseUpdateCheck: true  # default: on for development machines
+```
+
+The brew check runs `brew update` to refresh package metadata, so leave it off
+where Homebrew needs admin rights. Machines set up before these keys existed
+have both checks off until `chezmoi init` writes the defaults.
+
 ## 1Password
 
 1Password and its CLI are installed through the Brewfile. Enable desktop app

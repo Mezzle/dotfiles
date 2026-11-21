@@ -58,6 +58,17 @@
 {{-   end -}}
 {{- end }}
 
+{{- /* Homebrew needs admin rights on work machines, so check only elsewhere. */ -}}
+{{- $brewUpdateCheck := and (eq .chezmoi.os "darwin") (not $work) -}}
+{{- if hasKey . "brewUpdateCheck" -}}
+{{-   $brewUpdateCheck = .brewUpdateCheck -}}
+{{- end }}
+
+{{- $miseUpdateCheck := $devMachine -}}
+{{- if hasKey . "miseUpdateCheck" -}}
+{{-   $miseUpdateCheck = .miseUpdateCheck -}}
+{{- end }}
+
 progress: true
 
 data:
@@ -69,6 +80,8 @@ data:
   signGitCommits: {{ $gpgSign }}
   signingKey: {{ $signingKey }}
   tldrawOffline: {{ $tldrawOffline }}
+  brewUpdateCheck: {{ $brewUpdateCheck }}
+  miseUpdateCheck: {{ $miseUpdateCheck }}
 {{ with (index . "npmGithubTokenRef") }}
   npmGithubTokenRef: {{ . | quote }}
 {{ end }}
