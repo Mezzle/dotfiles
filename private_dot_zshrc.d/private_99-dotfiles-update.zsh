@@ -6,6 +6,8 @@
 # check starts, so concurrent shells don't each run one and an offline check
 # still waits a day to retry.
 () {
+    # Set again by the hook below; don't let a child shell inherit a stale one.
+    unset DOTFILES_UPDATE
     [[ -o interactive && -t 1 && -z "${CLAUDECODE:-}" ]] || return 0
     (( ${+commands[chezmoi]} )) || return 0
 
@@ -59,7 +61,7 @@
         [[ -n "$remote_sha" ]] || exit
         # Up to date, or the remote tip is already in local history.
         if git merge-base --is-ancestor "$remote_sha" HEAD; then
-            rm -f -- "$_dotfiles_update_available"
+            rm -f -- "$_dotfiles_update_available" "$notice"
             exit
         fi
         print -r -- "$remote_sha" >| "$_dotfiles_update_available"
